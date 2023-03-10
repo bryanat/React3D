@@ -1,33 +1,36 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
-import '../Assets/Scene1.css';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+import { Canvas, useLoader } from '@react-three/fiber'
 
-export default function Scene1() {
-  const mount = useRef(null);
+const Scene1 = () => {
+  const canvasRef = useRef(null);
 
   useEffect(() => {
-    // create a Three.js scene
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    mount.current.appendChild(renderer.domElement);
-    camera.position.set(0, 0, 10);
-
-    // load the FBX model
     const loader = new FBXLoader();
-    loader.load('../Assets/biniso20.fbx', function (object) {
-      scene.add(object);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
+
+    camera.position.set(0, 0, 5);
+
+    loader.load('/home/bryanat/react3d/src/Assets/biniso20.fbx', (fbx) => {
+      const group = new THREE.Group();
+      group.add(fbx);
+      scene.add(group);
+    }, undefined, (error) => {
+      console.error(error);
     });
 
-    // animate the scene
-    function animate() {
+    const animate = () => {
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
-    }
-    animate();
-  }, []);
+    };
 
-  return <div ref={mount} />;
-}
+    animate();
+  }, [canvasRef]);
+
+  return <canvas ref={canvasRef} />;
+};
+
+export default Scene1;

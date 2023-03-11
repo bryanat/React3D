@@ -1,25 +1,13 @@
-// import "./styles.css";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useFBX } from "@react-three/drei";
+// import './Assets/App.css'
 import { Suspense } from "react";
-
-const Scene = () => {
-  const fbx = useFBX("biniso20.fbx");
-
-  return <primitive object={fbx} scale={0.005} />;
-};
+import Scene3D from "./Scenes/Scene3D";
+import SceneTensor from "./Scenes/SceneTensor";
 
 export default function App() {
-  // const fbx = useFBX("/home/bryanat/react3d/src/Assets/fbxgear/Gear2.fbx");
-
   return (
-    <div className="App">
-      <Canvas>
-        <Suspense fallback={null}>
-          <Scene />
-          <OrbitControls />
-        </Suspense>
-      </Canvas>
+    <div className="App" style={{ width: '100%', height: '100vh' }}>
+      <SceneTensor />
+      <Scene3D />
     </div>
   );
 }

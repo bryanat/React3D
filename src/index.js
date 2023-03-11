@@ -3,8 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from './reportWebVitals';
-import Scene1 from './Scenes/Scene1'
-import MyScene from './Scenes/MyScene'
+import Scene3D from "./Scenes/Scene3D";
 import App from './App'
 
 const router = createBrowserRouter([
@@ -14,7 +13,7 @@ const router = createBrowserRouter([
     },
     {
       path: "/myscene",
-      element: <MyScene />
+      element: <Scene3D />
     }
   ]);
 

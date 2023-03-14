@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from './reportWebVitals';
-import Scene3D from "./Scenes/Scene3D";
+import Scene3D from "./Scenes/OutputScene3D";
 import App from './App'
 
 const router = createBrowserRouter([

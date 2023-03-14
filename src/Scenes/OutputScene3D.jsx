@@ -2,7 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useFBX } from "@react-three/drei";
 import { Suspense } from "react";
 
-export default function Scene3D() {
+export default function OutputScene3D() {
   const fbx = useFBX("biniso20.fbx");
 
   return (

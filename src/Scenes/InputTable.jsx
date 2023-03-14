@@ -10,6 +10,12 @@ export default function InputTable() {
     setrowCount(rowCount + 1);
   };
 
+  const components = [...Array(rowCount)].map((_, index) => {
+    return(
+      <InputRow color='#ffffff' />
+    )
+    // <TextField key={index} label={`Component ${index + 1}`} />
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,8 +24,6 @@ export default function InputTable() {
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1, width: '20vw' } }}>
-      <InputRow color="#ffffff"/>
-      <InputRow color="#ffffff"/>
       <InputRow color="#ffffff"/>
       <Button type="submit" variant="contained" color="primary">Submit</Button>
     </Box>

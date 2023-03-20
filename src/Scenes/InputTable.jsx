@@ -29,7 +29,7 @@ export default function InputTable() {
       <Button variant="contained" onClick={handleClick}>
         Add Box Type
       </Button>
-      <InputRow color="#ffffff"/>
+      <InputRow color="#181a1b"/>
       {components}
       <Button type="submit" variant="contained" color="primary">Submit</Button>
     </Box>

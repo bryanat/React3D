@@ -10,6 +10,7 @@ import InputTable from './Scenes/InputTable';
 import InputScene3D from './Scenes/InputScene3D';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
+import ExplainPage from './Scenes/ExplainPage';
 
 export default function App() {
 
@@ -55,11 +56,10 @@ export default function App() {
             <SceneTensor />
           </TabPanel>
           <TabPanel value="2">
-            Item 2
+            Item 2 (peak into backend (videos, gifs, training performance, graphs, tensorboard))
           </TabPanel>
           <TabPanel value="3">
-            Item 3
-            
+            <ExplainPage />
           </TabPanel>
         </TabContext>
             {value == "1" ? <OutputScene3D /> : <null/>}

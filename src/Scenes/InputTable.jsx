@@ -25,13 +25,13 @@ export default function InputTable() {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1, width: '20vw' } }}>
+    <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
       <Button variant="contained" onClick={handleClick}>
         Add Box Type
       </Button>
       <InputRow color="#181a1b"/>
       {components}
-      <Button type="submit" variant="contained" color="primary">Submit</Button>
+      <Button type="submit" variant="contained" color="primary">Submit (Send to Unity backend)</Button>
     </Box>
   );
 }

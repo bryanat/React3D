@@ -62,7 +62,7 @@ export default function App() {
             
           </TabPanel>
         </TabContext>
-            <OutputScene3D />
+            {value == "1" ? <OutputScene3D /> : <null/>}
       </ThemeProvider>
     </div>
   );

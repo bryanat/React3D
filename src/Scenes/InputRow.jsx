@@ -34,10 +34,6 @@ export default function InputRow(props) {
     setboxCount(boxCount + 1);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(`Width: ${boxWidth}\nLength: ${boxLength}\nHeight: ${boxHeight}\nCount: ${boxCount}`);
-  };
 
   return (
     <Box sx={{ bgcolor: props.color }}>

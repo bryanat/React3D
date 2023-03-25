@@ -80,6 +80,7 @@ export default function InputTable() {
               "Width": 23.45,
               "Height": 23.85,
               "Quantity": 1,
+              "Color": "#ff0000"
           },
           {
               "Product_id": 1,
@@ -87,6 +88,7 @@ export default function InputTable() {
               "Width": 11.70,
               "Height": 11.90,
               "Quantity": 4,
+              "Color": "#00ff00"
           },
           {
               "Product_id": 2,
@@ -94,6 +96,7 @@ export default function InputTable() {
               "Width": 7.78,
               "Height": 7.88,
               "Quantity": 9,
+              "Color": "#0000ff"
           },
           {
               "Product_id": 3,
@@ -101,6 +104,7 @@ export default function InputTable() {
               "Width": 5.825,
               "Height": 5.925,
               "Quantity": 16,
+              "Color": "#ffff00"
           }
       ]
   })

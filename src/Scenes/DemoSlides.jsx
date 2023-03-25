@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 
-const images = importAll(require.context('../Assets/img/slides/', false, /\.(png|jpg)$/));
+const images = importAll(require.context('../Assets/img/slides/', false, /\.(svg|jpg)$/));
 
 export default function DemoSlides() {
   return (

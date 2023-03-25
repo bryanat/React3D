@@ -13,9 +13,12 @@ app.use(express.json());
 // test route
 // app.post('/sendtounity', async (req, res) => {
 app.post('/sendtounity', async (req, res) => {
+
     console.log('/sendtounity route hitt');
     console.log(req.body);
-    res.send(req.body);
+    // res.send('Bins')
+    // res.send('../public/Bins.fbx')
+    res.send('Bins.fbx');
 
     // 1 get req from react app with json data
     // 2 save to json file

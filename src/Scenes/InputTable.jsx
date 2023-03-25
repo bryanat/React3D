@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, TextField, Button } from '@mui/material';
 import InputRow from './InputRow';
 import colors from '../colors';
 import axios from 'axios';
-
-
+import { FbxContext } from "./FbxContext";
    
 
 
@@ -17,6 +16,8 @@ export default function InputTable() {
   const [boxLength, setboxLength] = useState(0);
   const [boxHeight, setboxHeight] = useState(0);
   const [boxCount, setboxCount] = useState(0);
+
+  const { fbxfilename, setfbxfilename } = useContext(FbxContext);
 
   // perform any logic before setting new box width
   const handleboxWidthChange = (event) => {
@@ -78,34 +79,35 @@ export default function InputTable() {
               "Length": 14.70,
               "Width": 23.45,
               "Height": 23.85,
-              "Quantity": 1
+              "Quantity": 1,
           },
           {
               "Product_id": 1,
               "Length": 14.70,
               "Width": 11.70,
               "Height": 11.90,
-              "Quantity": 4
+              "Quantity": 4,
           },
           {
               "Product_id": 2,
               "Length": 14.70,
               "Width": 7.78,
               "Height": 7.88,
-              "Quantity": 9
+              "Quantity": 9,
           },
           {
               "Product_id": 3,
               "Length": 14.70,
               "Width": 5.825,
               "Height": 5.925,
-              "Quantity": 16
+              "Quantity": 16,
           }
       ]
   })
     .then(async function (response) {
       // await ...
-      console.log(response)
+      console.log(response.data)
+      setfbxfilename(response.data)
 
       // 1 wait for fbx file in response 
       // 2 display fbx file in <OutputScene3D fbxfile='filename.fbx' />
@@ -114,12 +116,12 @@ export default function InputTable() {
       console.log(error)
     })
 
-    console.log(`boxId:0 boxWidth:${boxWidth} boxLength:${boxLength} boxHeight:${boxHeight} boxCount:${boxCount} `)
-    // console.log(`Width: ${boxWidth}\nLength: ${boxLength}\nHeight: ${boxHeight}\nCount: ${boxCount}`);
+    // console.log(`boxId:0 boxWidth:${boxWidth} boxLength:${boxLength} boxHeight:${boxHeight} boxCount:${boxCount} `)
   };
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
+      <Box>{fbxfilename}</Box>
       <Button variant="contained" onClick={handleClick}>
         Add Box Type
       </Button>
@@ -158,8 +160,8 @@ export default function InputTable() {
       </Box>
 
 
-      {/* <InputRow color="#181a1b"/> */}
-      {/* {components} */}
+      {/* <InputRow color="#181a1b"/>
+      {components} */}
       <Button type="submit" variant="contained" color="primary">Submit (Send to Unity backend)</Button>
     </Box>
   );

@@ -54,16 +54,15 @@ export default function App() {
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList onChange={handleChange} aria-label="lab API tabs example">
-                <Tab label="Item One" value="1" />
-                <Tab label="Item Two" value="2" />
-                <Tab label="Item Three" value="3" />
-                <Tab label="Item Four" value="4" />
+                <Tab label="One (Demo)" value="1" />
+                <Tab label="Two (Tensorboard)" value="2" />
+                <Tab label="Three (Slides)" value="3" />
+                <Tab label="Four (Appendix Cards)" value="4" />
               </TabList>
             </Box>
             <TabPanel value="1">
               Item 1
               <InputTable />
-              <SceneTensor />
             </TabPanel>
             <TabPanel value="2">
               Item 2 (peak into backend (videos, gifs, training performance, graphs, tensorboard))

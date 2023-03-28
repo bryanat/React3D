@@ -13,6 +13,8 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import ExplainPage from './Scenes/ExplainPage';
 import DemoSlides from './Scenes/DemoSlides';
 import { FbxContextProvider } from './Scenes/FbxContext';
+import CardTemplate from './Scenes/CardTemplate';
+import imghyperparameters from './Assets/img/Hyperparameters.png'
 
 // import { FbxContext } from "./Scenes/FbxContext";
 // const { count } = React.useContext(FbxContext)
@@ -21,11 +23,7 @@ import { FbxContextProvider } from './Scenes/FbxContext';
 
 export default function App() {
 
-
   const [value, setValue] = React.useState("1");
-
-  const [resource, setResource] = React.useState("initialResource");
-  const [isPending, startTransition] = useTransition();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -73,6 +71,13 @@ export default function App() {
             </TabPanel>
             <TabPanel value="4">
               <ExplainPage />
+              <CardTemplate 
+                title="Hyperparameters" 
+                subheader="hyperparameters fine-tuning" 
+                image={imghyperparameters} 
+                caption="hyperparameters caption here" 
+                more="read more about hyperparameters here"
+              />
             </TabPanel>
           </TabContext>
               {value == "1" ? <OutputScene3D fbxfilename="biniso20.fbx"/> : <null/>}

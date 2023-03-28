@@ -6,7 +6,7 @@ const images = importAll(require.context('../Assets/img/slides/', false, /\.(svg
 export default function DemoSlides() {
   return (
     <Box>
-      Demo Slides
+      Demo Slides tell a story, even if it includes upcoming features + Responsible AI slide
       {images.map((image, index) => (
         <img key={index} src={image.default} alt={image.fileName} />
       ))}

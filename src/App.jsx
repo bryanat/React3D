@@ -50,24 +50,24 @@ export default function App() {
         <FbxContextProvider>
           <CssBaseline />
           <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider', position: 'fixed' }}>
               <TabList onChange={handleChange} aria-label="lab API tabs example">
-                <Tab label="One (Demo)" value="1" />
-                <Tab label="Two (Tensorboard)" value="2" />
-                <Tab label="Three (Slides)" value="3" />
+                <Tab label="One (Slides)" value="1" />
+                <Tab label="Two (Demo)" value="2" />
+                <Tab label="Three (Tensorboard)" value="3" />
                 <Tab label="Four (Appendix Cards)" value="4" />
               </TabList>
             </Box>
             <TabPanel value="1">
+              <DemoSlides />
+            </TabPanel>
+            <TabPanel value="2">
               Item 1
               <InputTable />
             </TabPanel>
-            <TabPanel value="2">
+            <TabPanel value="3">
               Item 2 (peak into backend (videos, gifs, training performance, graphs, tensorboard))
               <SceneTensor />
-            </TabPanel>
-            <TabPanel value="3">
-              <DemoSlides />
             </TabPanel>
             <TabPanel value="4">
               <ExplainPage />
@@ -80,7 +80,7 @@ export default function App() {
               />
             </TabPanel>
           </TabContext>
-              {value == "1" ? <OutputScene3D fbxfilename="biniso20.fbx"/> : <null/>}
+              {value == "2" ? <OutputScene3D fbxfilename="biniso20.fbx"/> : <null/>}
         </FbxContextProvider>
       </ThemeProvider>
     </div>

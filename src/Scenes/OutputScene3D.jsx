@@ -13,7 +13,12 @@ export default function OutputScene3D(props) {
         <pointLight position={[1, 1, 1]} />
         <ambientLight />
         <primitive object={fbx} scale={0.005} />;
-        <OrbitControls />
+        <OrbitControls 
+          makeDefault
+          position={[500, 0.9, 1.8]}
+          fov={60}
+          zoom={0.9}
+        />
       </Canvas>
     </Suspense>
   );

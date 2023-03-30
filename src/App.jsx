@@ -23,7 +23,7 @@ import imghyperparameters from './Assets/img/Hyperparameters.png'
 
 export default function App() {
 
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState("2");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

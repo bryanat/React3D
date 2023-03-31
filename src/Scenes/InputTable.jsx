@@ -10,36 +10,36 @@ export default function InputTable() {
 
   ///////////////////////////////////////
   // state data to send as json
-  const [boxWidth0, setboxWidth0] = useState(0);
   const [boxLength0, setboxLength0] = useState(0);
+  const [boxWidth0, setboxWidth0] = useState(0);
   const [boxHeight0, setboxHeight0] = useState(0);
   const [boxCount0, setboxCount0] = useState(0);
   
-  const [boxWidth1, setboxWidth1] = useState(0);
   const [boxLength1, setboxLength1] = useState(0);
+  const [boxWidth1, setboxWidth1] = useState(0);
   const [boxHeight1, setboxHeight1] = useState(0);
   const [boxCount1, setboxCount1] = useState(0);
   
-  const [boxWidth2, setboxWidth2] = useState(0);
   const [boxLength2, setboxLength2] = useState(0);
+  const [boxWidth2, setboxWidth2] = useState(0);
   const [boxHeight2, setboxHeight2] = useState(0);
   const [boxCount2, setboxCount2] = useState(0);
   
-  const [boxWidth3, setboxWidth3] = useState(0);
   const [boxLength3, setboxLength3] = useState(0);
+  const [boxWidth3, setboxWidth3] = useState(0);
   const [boxHeight3, setboxHeight3] = useState(0);
   const [boxCount3, setboxCount3] = useState(0);
 
   const { fbxfilename, setfbxfilename } = useContext(FbxContext);
 
   //// 0: red default ////
-  // perform any logic before setting new box width
-  const handleboxWidthChange0 = (event) => {
-    setboxWidth0(event.target.value);
-  };
   // perform any logic before setting new box length
   const handleboxLengthChange0 = (event) => {
     setboxLength0(event.target.value);
+  };
+  // perform any logic before setting new box width
+  const handleboxWidthChange0 = (event) => {
+    setboxWidth0(event.target.value);
   };
   // perform any logic before setting new box height
   const handleboxHeightChange0 = (event) => {
@@ -54,13 +54,13 @@ export default function InputTable() {
   };
 
   //// 1: green default ////
-  // perform any logic before setting new box width
-  const handleboxWidthChange1 = (event) => {
-    setboxWidth1(event.target.value);
-  };
   // perform any logic before setting new box length
   const handleboxLengthChange1 = (event) => {
     setboxLength1(event.target.value);
+  };
+  // perform any logic before setting new box width
+  const handleboxWidthChange1 = (event) => {
+    setboxWidth1(event.target.value);
   };
   // perform any logic before setting new box height
   const handleboxHeightChange1 = (event) => {
@@ -75,13 +75,13 @@ export default function InputTable() {
   };
 
   //// 2: blue default ////
-  // perform any logic before setting new box width
-  const handleboxWidthChange2 = (event) => {
-    setboxWidth2(event.target.value);
-  };
   // perform any logic before setting new box length
   const handleboxLengthChange2 = (event) => {
     setboxLength2(event.target.value);
+  };
+  // perform any logic before setting new box width
+  const handleboxWidthChange2 = (event) => {
+    setboxWidth2(event.target.value);
   };
   // perform any logic before setting new box height
   const handleboxHeightChange2 = (event) => {
@@ -96,13 +96,13 @@ export default function InputTable() {
   };
 
   //// 3: yellow default ////
-  // perform any logic before setting new box width
-  const handleboxWidthChange3 = (event) => {
-    setboxWidth3(event.target.value);
-  };
   // perform any logic before setting new box length
   const handleboxLengthChange3 = (event) => {
     setboxLength3(event.target.value);
+  };
+  // perform any logic before setting new box width
+  const handleboxWidthChange3 = (event) => {
+    setboxWidth3(event.target.value);
   };
   // perform any logic before setting new box height
   const handleboxHeightChange3 = (event) => {
@@ -213,17 +213,17 @@ export default function InputTable() {
       <Box sx={{ bgcolor: '#ff0000' }}>
         <TextField
           required
-          id="boxWidth"
-          label="Width"
-          value={boxWidth0}
-          onChange={handleboxWidthChange0}
-        />
-        <TextField
-          required
           id="boxLength"
           label="Length"
           value={boxLength0}
           onChange={handleboxLengthChange0}
+        />
+        <TextField
+          required
+          id="boxWidth"
+          label="Width"
+          value={boxWidth0}
+          onChange={handleboxWidthChange0}
         />
         <TextField
           required
@@ -246,17 +246,17 @@ export default function InputTable() {
       <Box sx={{ bgcolor: '#00ff00' }}>
         <TextField
           required
-          id="boxWidth"
-          label="Width"
-          value={boxWidth1}
-          onChange={handleboxWidthChange1}
-        />
-        <TextField
-          required
           id="boxLength"
           label="Length"
           value={boxLength1}
           onChange={handleboxLengthChange1}
+        />
+        <TextField
+          required
+          id="boxWidth"
+          label="Width"
+          value={boxWidth1}
+          onChange={handleboxWidthChange1}
         />
         <TextField
           required
@@ -279,17 +279,17 @@ export default function InputTable() {
       <Box sx={{ bgcolor: '#0000ff' }}>
         <TextField
           required
-          id="boxWidth"
-          label="Width"
-          value={boxWidth2}
-          onChange={handleboxWidthChange2}
-        />
-        <TextField
-          required
           id="boxLength"
           label="Length"
           value={boxLength2}
           onChange={handleboxLengthChange2}
+        />
+        <TextField
+          required
+          id="boxWidth"
+          label="Width"
+          value={boxWidth2}
+          onChange={handleboxWidthChange2}
         />
         <TextField
           required
@@ -312,17 +312,17 @@ export default function InputTable() {
       <Box sx={{ bgcolor: '#ffff00' }}>
         <TextField
           required
-          id="boxWidth"
-          label="Width"
-          value={boxWidth3}
-          onChange={handleboxWidthChange3}
-        />
-        <TextField
-          required
           id="boxLength"
           label="Length"
           value={boxLength3}
           onChange={handleboxLengthChange3}
+        />
+        <TextField
+          required
+          id="boxWidth"
+          label="Width"
+          value={boxWidth3}
+          onChange={handleboxWidthChange3}
         />
         <TextField
           required

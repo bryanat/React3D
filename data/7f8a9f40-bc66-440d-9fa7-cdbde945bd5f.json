@@ -1,0 +1,43 @@
+{
+    "Container": [
+        {
+            "Length": 590,
+            "Width": 239,
+            "Height": 235
+        }
+    ],
+    "Items": [
+        {
+            "Product_id": 0,
+            "Length": "1",
+            "Width": "2",
+            "Height": "3",
+            "Quantity": "4",
+            "Color": "#ff0000"
+        },
+        {
+            "Product_id": 1,
+            "Length": "5",
+            "Width": "6",
+            "Height": "7",
+            "Quantity": "8",
+            "Color": "#00ff00"
+        },
+        {
+            "Product_id": 2,
+            "Length": "9",
+            "Width": "10",
+            "Height": "11",
+            "Quantity": "12",
+            "Color": "#0000ff"
+        },
+        {
+            "Product_id": 3,
+            "Length": "13",
+            "Width": "14",
+            "Height": "14",
+            "Quantity": "16",
+            "Color": "#ffff00"
+        }
+    ]
+}

@@ -4,7 +4,7 @@ import InputRow from './InputRow';
 import colors from '../colors';
 import axios from 'axios';
 import { FbxContext } from "./FbxContext";
-   
+
 
 
 export default function InputTable() {
@@ -18,6 +18,8 @@ export default function InputTable() {
   const [boxCount, setboxCount] = useState(0);
 
   const { fbxfilename, setfbxfilename } = useContext(FbxContext);
+  const [tmp, settmp] = useState(0);
+  const [text, setText] = useState('');
 
   // perform any logic before setting new box width
   const handleboxWidthChange = (event) => {
@@ -58,67 +60,76 @@ export default function InputTable() {
     const reindex = index % 9;
     // const keyname = Object.keys(colors)[0]; // 'one'
     const colorkey = Object.keys(colors)[0 + reindex]; // 'one'
-    return(
+    return (
       <InputRow color={colors[colorkey].main} />
     )
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://192.168.1.87:8080/sendtounity', {   
-      "Container": [
-          {
+    axios({
+      method: 'post',
+      url: 'http://192.168.1.87:8080/sendtounity',
+      responseType: 'blob',
+      data:
+      {
+        "Container":
+          [
+            {
               "Length": 590,
-              "Width": 239, 
+              "Width": 239,
               "Height": 235
-          }
-      ],
-      "Items": [
-          {
+            }
+          ],
+        "Items":
+          [
+            {
               "Product_id": 0,
               "Length": 14.70,
               "Width": 23.45,
               "Height": 23.85,
               "Quantity": 1,
               "Color": "#ff0000"
-          },
-          {
+            },
+            {
               "Product_id": 1,
               "Length": 14.70,
               "Width": 11.70,
               "Height": 11.90,
               "Quantity": 4,
               "Color": "#00ff00"
-          },
-          {
+            },
+            {
               "Product_id": 2,
               "Length": 14.70,
               "Width": 7.78,
               "Height": 7.88,
               "Quantity": 9,
               "Color": "#0000ff"
-          },
-          {
+            },
+            {
               "Product_id": 3,
               "Length": 14.70,
               "Width": 5.825,
               "Height": 5.925,
               "Quantity": 16,
               "Color": "#ffff00"
-          }
-      ]
-  })
-    .then(async function (response) {
-      // await ...
-      console.log(response.data)
-      setfbxfilename(response.data)
+            }
+          ]
+      }
+    })
+      .then((response) => {
+        const reader = new FileReader();
+        reader.readAsText(new Blob([response.data]));
+        reader.onload = () => console.log(reader.result);
 
-      // 1 wait for fbx file in response 
-      // 2 display fbx file in <OutputScene3D fbxfile='filename.fbx' />
-    })
-    .catch( function (error) {
-      console.log(error)
-    })
+        // const url = window.URL.createObjectURL(new Blob([response.data]));
+        // const link = document.createElement('a');
+        // link.href = url;
+        // link.setAttribute('download', 'example.txt');
+        // document.body.appendChild(link);
+        // link.click();
+      });
 
     // console.log(`boxId:0 boxWidth:${boxWidth} boxLength:${boxLength} boxHeight:${boxHeight} boxCount:${boxCount} `)
   };

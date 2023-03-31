@@ -50,7 +50,7 @@ export default function App() {
         <FbxContextProvider>
           <CssBaseline />
           <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider', position: 'fixed' }}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider', position: 'fixed', backgroundColor: theme.palette.background.default, zIndex:2, width: '100%' }}>
               <TabList onChange={handleChange} aria-label="lab API tabs example">
                 <Tab label="One (Slides)" value="1" />
                 <Tab label="Two (Demo)" value="2" />

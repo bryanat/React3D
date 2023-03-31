@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 
 // create express app
 const app = new express();
@@ -20,16 +21,18 @@ app.post('/sendtounity', async (req, res) => {
     // console.log(req.body);
     
     // 1 write to json file with data from react app
-    fs.writeFile('data/output.json', JSON.stringify(req.body), (err) => {
+    const uuid = uuidv4();
+    const filename = `data/${uuid}.json`;
+    fs.writeFile(filename, JSON.stringify(req.body), (err) => {
         if (err) throw err;
-        console.log('Data written to file');
+        console.log(`Data written to file ${uuid}.json`);
     });
     
     // 2 run bash command with json file: mlagents-learn ..
     // exec()
     
     // 3 send .fbx file path to  
-    res.download('data/output.json')
+    res.download(filename)
     // res.send({fbxfilename: 'Bins.fbx'});
 
     // end

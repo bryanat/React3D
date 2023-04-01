@@ -3,7 +3,7 @@
         {
         "title": "Unity ML-Agents",
         "tags": "training, machine learning, reinforcement learning, unity",
-        "image": "../Assets/img/unitymlagents.jpg",
+        "image": "unitymlagents.jpg",
         "captiontext": "Unity ML-Agents is a deep reinforcement learning framework built on top of Unity, enabling both deep learning pytorch models and gym reinforcement learning trainers. Shown: run mlagents-learn command to start training our RL agent.",
         "moretext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
         },
@@ -11,63 +11,63 @@
         {
         "title": "Feature Engineering",
         "tags": "attention, sensor, buffer, observation",
-        "image": "../Assets/img/featureengineering.png",
+        "image": "featureengineering.png",
         "captiontext": "Feature engineering is an important prestep for combating possible shortcomings of the neural network and improving overall model performance ",
         "moretext": "We used “observation buffers” provided in MlAgents toolkit to tackle the problem of having a varying number of observation due to the need to pack different sets of boxes. The build-in Attention Module for observation buffers allows our agent to pay more attention to changes in the environment and less to the constants. In practice, using one-hot-encoding, each box has its own package of information saved inside the buffer that is updated every frame. \n We quickly realized that the variable nature of our action space could pose a problem to effective learning, so we sorted all the information that goes through the brain in hope of partially solving this lack of consistency in action output. \n Feature selection: a type of feature engineering involving choosing a subset of the available features that are most relevant to the problem at hand. UMLA's BufferSensor component implements residual self-attention that allows an agent to observe a variable number of features."
         },
         {
         "title": "State and Action Spaces",
         "tage":"state, action, sensor, discrete",
-        "image":"../Assets/img/stateactionspace.png",
+        "image":"stateactionspace.png",
         "captiontext":"State and action spaces are the core part of behavior parameters for the brain. Their sizes are held constant",
         "moretext": "We implemented regular sensors composed of vertices information alongside attention-imbued buffer sensors as explained in the feature engineering section. For ease of training, we provided our agent with a vertices array from which to select box positions. The vertices array is constructed using “tripoints”, which are the 3 concave vertices from a previously placed box. This leaves the agent with a limited number of choices to base its selection from. Our action space are in turn discrete, consisting of an array of box sizes, an array of tripoint vertices, and six possible rotations. \n We padded both regular sensors and sensor buffers with a maximum box quantity so that the sizes of action and state spaces can stay constant. In turn, we were able to automate the process of training without having to manually adjust the sizes of brain parameters for each different box set. "
         },    
         {
         "title": "Model",
         "tags": "ppo, model, neural network, curiosity, rnd, reward",
-        "image": "../Assets/img/model.jpg",
+        "image": "model.jpg",
         "captiontext": "We use PPO as our baseline model with an addition of 'curiosity' to promote better exploration",
         "moretext": "PPO, being an on-policy network with safe gradient updates, helps to ensure that eventual convergence happens relatively quickly. One of its shortcoming is that it is not permutation invariant, which makes solving combinatorial problems such as 3D bin packing very difficult. We found ways to combat this to a certain degree through feature engineering. /n We added both Curiosity Module ( Curiosity-driven Exploration by Self-supervised Prediction) and Random Walk Distillation (RND) onto PPO. We found curiosity an intrinsic driving force in our environment where exploration is much needed before exploitation and rewards are both sparse and dense. (see section on hyperparameters and reward shaping)"
         },
         {
         "title": "Hyperparameters",
         "tags": "tuning",
-        "image": "../Assets/img/hyperparameters.png",
+        "image": "hyperparameters.png",
         "captiontext": "Fine tuning the model (PPO) via hyperparameters to optimize its performance",
         "moretext": "We adopted best practices for most of the hyperparameters. However, since we imposed manual stepping in our environment, time-horizon, batch size, and buffer size had to be specially tuning. We referenced this paper for best pratices in PPO's hyperparameter tuning. "
         },
         {
         "title": "Multi-Platform Training",
         "tags": "performance, generalization",
-        "image": "../Assets/img/multiplatform.png",
+        "image": "multiplatform.png",
         "captiontext": "Multi-platform improves performance of PPO",
         "moretext": "We constructed multi-platforms for parallel training environments. We found PPO performs better in general with more consistency, better convergence, and improved stability and speed using ? platforms per CPU core. Having parallel environments also gives us the capability to set up different box sets on different platforms for curriculum learning and for greater generalization. (see section on curriculum learning)"
         },
         {
         "title": "Curriculum Learning",
         "tags": "curriculum, generalization",
-        "image": "../Assets/img/curriculumlearning.png",
+        "image": "curriculumlearning.png",
         "captiontext": "Currriculum learning is a technique used for training a complex task by dividing it into subtasks each with a subgoal",
         "moretext": "We tested training our agent with curriculum learning. Curriculum learning, as a feature provided in ML-Agents toolkits, can be easily configured inside the hyperparameters yaml file. For curriculum to be most effective, we created a random box and a random bin generators so that we can train our agent on a random set of boxes that potentially would fill up the entire bin.  We had the hope that with enough training after seeing multiple variations, our agent would generalize to a better solution."
         },
         {
         "title": "Reward Shaping",
         "tags": "gradient, placement, dense, sparse, reward",
-        "image": "../Assets/img/rewardshaping.png",
+        "image": "rewardshaping.png",
         "captiontext": "Reward shaping affects goal details and learning directions, which in our case applies to our agent's learning a box packing methodology that abides to common sense and real world requirements",
         "moretext": "We found a combination of dense (extrinsic) and sparse (intrinsic) rewards work best when our goal is maximizing percent volume packed without compromising good box placements. For better box placements, we gave a stability score after each box placement.\n  This helps set some basic rules to packing, such as packing boxes close together in a back to front, bottom to top manner. \n Vanishing gradient is a concern towards the end when positions are rarer and solution is harder to optimize. We found by adding a consistent rewards such as the number of boxes packed, this phenomenon is less likely to occur. \n Finally, we give a substantial larger reward when the percent volume filled is above a certain threshold, such as 85%, so to give our agent more incentive to reach the final hard to reach goals."
         },
         {
         "title": "Physics Check",
         "tags": "placement, physics,  features",
-        "image": "../Assets/img/physicscheck.png",
+        "image": "physicscheck.png",
         "captiontext": "Physics checks for impossible box placements is an important prestep in ensuring all boxes are packed correctly",
         "moretext": "We implemented physics check on all boxes to account for impossible or unsuitable placement. We took care to account for stacked boxes' being off their center of gravity, making them likely to fall down in real settings, and protrusion and overlapping problems. \n note: It is possible to add more box packing rules, such as having heavier items placed at the bottom, or having boxes with fragile items placed without rotation. These features can be easily built on top of our preexisting implementation."
         },
         {
         "title": "Training on Cloud",
         "tags": "aws, ec2, stability, scalability",
-        "image": "../Assets/img/trainingoncloud.png",
+        "image": "trainingoncloud.png",
         "captiontext": "Training on Cloud improves model performace, stability, and scalability",
         "moretext":"Parallel training environment can be optimized in terms of speed and performance when the right combination of CPU and GPU is used. It is not the case here that the more the better. We found that too many platforms with not enough CPUs actually hurt performance. \n However, given that convergence and stability in training do improve with an increase in the number of parallel environments for PPO, it is necessary to find where performance plateaus and adjust our platform size and instance size accordingly. "
         }

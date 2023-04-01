@@ -31,7 +31,7 @@ export default function CardTemplate(props) {
       <CardMedia
         component="img"
         height="400"
-        image={props.image}
+        image={`${process.env.PUBLIC_URL}/img/${props.image}`}
         alt="image not found"
       />
       <CardContent>

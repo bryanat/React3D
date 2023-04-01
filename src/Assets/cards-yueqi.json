@@ -5,7 +5,7 @@
         "tags": "training, machine learning, reinforcement learning, unity",
         "image": "unitymlagents.png",
         "captiontext": "Unity ML-Agents is a deep reinforcement learning framework built on top of Unity, enabling both deep learning pytorch models and gym reinforcement learning trainers. Shown: run mlagents-learn command to start training our RL agent.",
-        "moretext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+        "moretext": "We use Unity ML-Agents as a framework for training our packerhand agents. By design, Unity ML-Agents is an open-source framework on top of the Unity engine for developing intelligent agents (ai) using deep reinforcement learning. Unity serves as an reinforcement learning environment for training Agents with SOTA algorithms and models. The environment is coded in C# using the Unity API, whereas the agent's learning is coded in python using the Unity MLA API connected to pytorch (for DL) and gym (for RL)."
         },
         
         {

@@ -6,7 +6,6 @@ export default function SceneTensor() {
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      {/* SceneTensor ... fbxfilename: {fbxfilename} */}
       <iframe src="http://localhost:6006" title="Example" style={{ width: '100%', height: '100%' }} />
     </div>
   );

@@ -1,10 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import Explain from './Explain';
-// import CardOne from './CardOne';
 import CardTemplate from './CardTemplate';
 import imgsolutionevolutiontree from '../Assets/Solution_Evolution_Tree.svg'
-// import imghyperparameters from '../Assets/img/hyperparameters.png'
 import jsonData from '../Assets/cards-yueqi.json'
 
 export default function AppendixCards() {
@@ -12,26 +9,15 @@ export default function AppendixCards() {
   return (
     <Box sx={{ marginTop: 4, marginLeft: 30, marginRight: 30 }}>
         <img src={imgsolutionevolutiontree} />
-        <img src={'/home/bryanat/react3d/src/Assets/img/featureengineering.png'} />
-        <img src={`${process.env.PUBLIC_URL}/img/featureengineering.png`} />
-        {/* <CardOne title="Unity ML-Agents"/> */}
-        {/* <CardTemplate 
-          title="Hyperparameters" 
-          subheader="hyperparameters fine-tuning" 
-          image={imghyperparameters} 
-          caption="hyperparameters caption here" 
-          more="read more about hyperparameters here"
-        /> */}
-
-{jsonData.props.map((card) => (
-        <CardTemplate
-          title={card.title}
-          tags={card.tags}
-          image={card.image}
-          caption={card.captiontext}
-          more={card.moretext}
-        />
-      ))}
+        {jsonData.props.map((card) => (
+          <CardTemplate
+            title={card.title}
+            tags={card.tags}
+            image={card.image}
+            caption={card.captiontext}
+            more={card.moretext}
+          />
+        ))}
         
         {/* <Box>Cards: Data: Data generator from random box spawner</Box>
         <Box>Cards: Production: multiple pipelines running in parallel, one current pipeline running inference while another pipeline testing new experiments and configurations </Box>
@@ -40,9 +26,7 @@ export default function AppendixCards() {
         <Box>Seachbox</Box>
         <Box>Tagcloud (ML, RL, cloud/deployment/devops, C#/OOP)</Box>
         <Box>Table of contents</Box>
-        <Explain data="1"/>
-        <Explain data="2"/>
-        <Explain data="3"/> */}
+        */}
     </Box>
   );
 }

@@ -3,7 +3,7 @@
         {
         "title": "Unity ML-Agents",
         "tags": "training, machine learning, reinforcement learning, unity",
-        "image": "unitymlagents.jpg",
+        "image": "unitymlagents.png",
         "captiontext": "Unity ML-Agents is a deep reinforcement learning framework built on top of Unity, enabling both deep learning pytorch models and gym reinforcement learning trainers. Shown: run mlagents-learn command to start training our RL agent.",
         "moretext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
         },
@@ -67,7 +67,7 @@
         {
         "title": "Training on Cloud",
         "tags": "aws, ec2, stability, scalability",
-        "image": "trainingoncloud.png",
+        "image": "trainingoncloud.jpg",
         "captiontext": "Training on Cloud improves model performace, stability, and scalability",
         "moretext":"Parallel training environment can be optimized in terms of speed and performance when the right combination of CPU and GPU is used. It is not the case here that the more the better. We found that too many platforms with not enough CPUs actually hurt performance. \n However, given that convergence and stability in training do improve with an increase in the number of parallel environments for PPO, it is necessary to find where performance plateaus and adjust our platform size and instance size accordingly. "
         }

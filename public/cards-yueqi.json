@@ -11,9 +11,9 @@
         {
         "title": "Feature Engineering",
         "tags": "attention, sensor, buffer, observation",
-        "image": "",
+        "image": "../Assets/img/featureengineering.png",
         "captiontext": "Feature engineering is an important prestep for combating possible shortcomings of the neural network and improving overall model performance ",
-        "moretext": "We used “observation buffers” provided in MlAgents toolkit to tackle the problem of having a varying number of observation due to the need to pack different sets of boxes. The build-in Attention Module for observation buffers allows our agent to pay more attention to changes in the environment and less to the constants. In practice, using one-hot-encoding, each box has its own package of information saved inside the buffer that is updated every frame. \n We quickly realized that the variable nature of our action space could pose a problem to effective learning, so we sorted all the information that goes through the brain in hope of partially solving this lack of consistency in action output. "
+        "moretext": "We used “observation buffers” provided in MlAgents toolkit to tackle the problem of having a varying number of observation due to the need to pack different sets of boxes. The build-in Attention Module for observation buffers allows our agent to pay more attention to changes in the environment and less to the constants. In practice, using one-hot-encoding, each box has its own package of information saved inside the buffer that is updated every frame. \n We quickly realized that the variable nature of our action space could pose a problem to effective learning, so we sorted all the information that goes through the brain in hope of partially solving this lack of consistency in action output. \n Feature selection: a type of feature engineering involving choosing a subset of the available features that are most relevant to the problem at hand. UMLA's BufferSensor component implements residual self-attention that allows an agent to observe a variable number of features."
         },
         {
         "title": "State and Action Spaces",
@@ -23,7 +23,7 @@
         "moretext": "We implemented regular sensors composed of vertices information alongside attention-imbued buffer sensors as explained in the feature engineering section. For ease of training, we provided our agent with a vertices array from which to select box positions. The vertices array is constructed using “tripoints”, which are the 3 concave vertices from a previously placed box. This leaves the agent with a limited number of choices to base its selection from. Our action space are in turn discrete, consisting of an array of box sizes, an array of tripoint vertices, and six possible rotations. \n We padded both regular sensors and sensor buffers with a maximum box quantity so that the sizes of action and state spaces can stay constant. In turn, we were able to automate the process of training without having to manually adjust the sizes of brain parameters for each different box set. "
         },    
         {
-        "title": "mode;",
+        "title": "Model",
         "tags": "ppo, model, neural network, curiosity, rnd, reward",
         "image": "../Assets/img/model.jpg",
         "captiontext": "We use PPO as our baseline model with an addition of 'curiosity' to promote better exploration",
@@ -33,7 +33,7 @@
         "title": "Hyperparameters",
         "tags": "tuning",
         "image": "../Assets/img/hyperparameters.png",
-        "captiontext": "",
+        "captiontext": "Fine tuning the model (PPO) via hyperparameters to optimize its performance",
         "moretext": "We adopted best practices for most of the hyperparameters. However, since we imposed manual stepping in our environment, time-horizon, batch size, and buffer size had to be specially tuning. We referenced this paper for best pratices in PPO's hyperparameter tuning. "
         },
         {

@@ -68,7 +68,7 @@ export default function App() {
               <SceneTensor />
             </TabPanel>
             <TabPanel value="4">
-              <AppendixCards />
+                <AppendixCards />
             </TabPanel>
           </TabContext>
               {value == "2" ? <OutputScene3D fbxfilename="biniso20.fbx"/> : <null/>}

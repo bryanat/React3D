@@ -9,7 +9,7 @@ import imghyperparameters from '../Assets/img/Hyperparameters.png'
 export default function AppendixCards() {
 
   return (
-    <Box sx={{ marginTop: 4, marginLeft: 35, marginRight: 35 }}>
+    <Box sx={{ marginTop: 4, marginLeft: 30, marginRight: 30 }}>
         <img src={imgsolutionevolutiontree} />
         <CardOne title="Unity ML-Agents"/>
         <CardTemplate 

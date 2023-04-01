@@ -2,12 +2,22 @@ import React from 'react';
 import { Box } from '@mui/material';
 import Explain from './Explain';
 import CardOne from './CardOne';
+import CardTemplate from './CardTemplate';
+import imgsolutionevolutiontree from '../Assets/Solution_Evolution_Tree.svg'
+import imghyperparameters from '../Assets/img/Hyperparameters.png'
 
-export default function ExplainPage() {
+export default function AppendixCards() {
 
   return (
-    <Box>
+    <Box sx={{ marginTop: 4 }}>
         <CardOne title="Unity ML-Agents"/>
+        <CardTemplate 
+          title="Hyperparameters" 
+          subheader="hyperparameters fine-tuning" 
+          image={imghyperparameters} 
+          caption="hyperparameters caption here" 
+          more="read more about hyperparameters here"
+        />
         {/* <Box>Cards: Data: Data generator from random box spawner</Box>
         <Box>Cards: Production: multiple pipelines running in parallel, one current pipeline running inference while another pipeline testing new experiments and configurations </Box>
         <Box>Cards: Production: validation: having an out of sample test data (.json box set for validation, that is separate from the data used to train)  </Box>

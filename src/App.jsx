@@ -10,11 +10,9 @@ import InputTable from './Scenes/InputTable';
 import InputScene3D from './Scenes/InputScene3D';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-import ExplainPage from './Scenes/ExplainPage';
+import AppendixCards from './Scenes/AppendixCards';
 import DemoSlides from './Scenes/DemoSlides';
 import { FbxContextProvider } from './Scenes/FbxContext';
-import CardTemplate from './Scenes/CardTemplate';
-import imghyperparameters from './Assets/img/Hyperparameters.png'
 
 // import { FbxContext } from "./Scenes/FbxContext";
 // const { count } = React.useContext(FbxContext)
@@ -70,14 +68,7 @@ export default function App() {
               <SceneTensor />
             </TabPanel>
             <TabPanel value="4">
-              <ExplainPage />
-              <CardTemplate 
-                title="Hyperparameters" 
-                subheader="hyperparameters fine-tuning" 
-                image={imghyperparameters} 
-                caption="hyperparameters caption here" 
-                more="read more about hyperparameters here"
-              />
+              <AppendixCards />
             </TabPanel>
           </TabContext>
               {value == "2" ? <OutputScene3D fbxfilename="biniso20.fbx"/> : <null/>}

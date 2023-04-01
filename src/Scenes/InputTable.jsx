@@ -4,7 +4,7 @@ import InputRow from './InputRow';
 import colors from '../colors';
 import axios from 'axios';
 import { FbxContext } from "./FbxContext";
-
+import { saveAs } from 'file-saver';
 
 export default function InputTable() {
 
@@ -187,9 +187,17 @@ export default function InputTable() {
     }
     })
       .then((response) => {
+        // console.log(response)
         const reader = new FileReader();
         reader.readAsText(new Blob([response.data]));
         reader.onload = () => console.log(reader.result);
+
+        
+        // const filename = `Boxes_30.fbx`;
+        // const blob = new Blob([response.data]);
+        // saveAs(blob, filename, { type: 'application/octet-stream' });
+
+        setfbxfilename('Boxes_30.fbx');
 
         // const url = window.URL.createObjectURL(new Blob([response.data]));
         // const link = document.createElement('a');

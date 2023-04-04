@@ -328,7 +328,7 @@ export default function InputTable() {
       </Button>
 
       {/* 0: red default */}
-      <Box sx={{ bgcolor: '#ff0000' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center'}} >
         <TextField
           required
           id="boxLength"
@@ -357,11 +357,11 @@ export default function InputTable() {
           value={boxCount0}
           onChange={handleboxCountChange0}
         />
-        <Button onClick={handleboxCountIncrement0} variant="contained">+</Button>
+        <Button onClick={handleboxCountIncrement0} variant="contained" style={{ backgroundColor: '#ff0000'}}>+</Button>
       </Box>
 
       {/* 1: green default */}
-      <Box sx={{ bgcolor: '#00ff00' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center'}} >
         <TextField
           required
           id="boxLength"
@@ -390,11 +390,11 @@ export default function InputTable() {
           value={boxCount1}
           onChange={handleboxCountChange1}
         />
-        <Button onClick={handleboxCountIncrement1} variant="contained">+</Button>
+        <Button onClick={handleboxCountIncrement1} variant="contained" style={{ backgroundColor: '#00ff00'}}>+</Button>
       </Box>      
 
       {/* 2: blue default */}
-      <Box sx={{ bgcolor: '#0000ff' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center'}} >
         <TextField
           required
           id="boxLength"
@@ -423,12 +423,12 @@ export default function InputTable() {
           value={boxCount2}
           onChange={handleboxCountChange2}
         />
-        <Button onClick={handleboxCountIncrement2} variant="contained">+</Button>
+        <Button onClick={handleboxCountIncrement2} variant="contained" style={{ backgroundColor: '#0000ff'}}>+</Button>
       </Box>      
 
       {/* 3: yellow default */}
       {/* <Box sx={{ bgcolor: '#ffff00' }}> */}
-      <Box >
+      <Box sx={{ display: 'flex', alignItems: 'center'}} >
         <TextField
           required
           id="boxLength"
@@ -457,7 +457,7 @@ export default function InputTable() {
           value={boxCount3}
           onChange={handleboxCountChange3}
         />
-        <Button onClick={handleboxCountIncrement3} variant="contained">+</Button>
+        <Button onClick={handleboxCountIncrement3} variant="contained"style={{ backgroundColor: '#ffff00'}} >+</Button>
       </Box>      
 
       {/* <InputRow color="#181a1b"/>

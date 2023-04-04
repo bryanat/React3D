@@ -4,14 +4,14 @@ import InputRow from './InputRow';
 import colors from '../colors';
 import axios from 'axios';
 import { FbxContext } from "./FbxContext";
-import hostIP from './host.js'
-
 
 export default function InputTable() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const hostIP = 'http://ec2-35-88-208-198.us-west-2.compute.amazonaws.com';
   
   ///////////////////////////////////////
   // state data to send as json

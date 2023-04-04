@@ -1,1 +1,0 @@
-export default hostIP = 'http://ec2-35-88-208-198.us-west-2.compute.amazonaws.com';

@@ -146,7 +146,7 @@ export default function InputTable() {
     event.preventDefault();
     axios({
       method: 'post',
-      url: `http://${hostIP}:8080/blank`
+      url: `${hostIP}:8080/blank`
     })
       .then((response) => {
         console.log(`fbx/${response.data}`);
@@ -163,7 +163,7 @@ export default function InputTable() {
     console.log("HJBSAJKBDJASBDK");
     axios({
       method: 'post',
-      url: `http://${hostIP}:8080/instant`,
+      url: `${hostIP}:8080/instant`,
       timeout: 90000,
       data:
       {   
@@ -248,7 +248,7 @@ export default function InputTable() {
     event.preventDefault();
     axios({
       method: 'post',
-      url: `http://${hostIP}:8080/enhanced`,
+      url: `${hostIP}:8080/enhanced`,
       data:
       {   
         "Container": [

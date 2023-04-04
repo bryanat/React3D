@@ -261,8 +261,8 @@ export default function InputTable() {
         // saveAs(blob, filename, { type: 'application/octet-stream' });
         setIsLoading(false);
         console.log(`init`)
-        console.log(`fbx/${response.data}`);
-        setfbxfilename(`fbx/${response.data}`);
+        // console.log(`fbx/${response.data}`);
+        setfbxfilename(`fbx/boxes30v2.fbx`);
         // setfbxfilename(`fbx/${response.data}`);
         console.log(`end`)
 

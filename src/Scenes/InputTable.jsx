@@ -463,10 +463,9 @@ export default function InputTable() {
       {/* <InputRow color="#181a1b"/>
       {components} */}
 
-    <Button onClick={handleFBXclick}>load fbx</Button>
 
 
-      <Button variant="contained" onClick={handleOpen}>Open Component</Button>
+      <Button variant="contained" onClick={handleOpen}>Submit</Button>
       {open && 
         <Dialog open={true} onClose={handleClose}>
         <Box sx={{ backgroundColor: '#181a1b' }}>
@@ -477,7 +476,7 @@ export default function InputTable() {
               <Grid item xs={6}>
                 {/* This is the left section */}
                 <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitInstant} >
-                  Instant
+                  Quick
                 </Box>
               </Grid>
               <Grid item xs={6}>
@@ -496,6 +495,8 @@ export default function InputTable() {
         </Box>
         </Dialog>
       }
+
+    <Button onClick={handleFBXclick}>load fbx</Button>
     
     </Box>
   );

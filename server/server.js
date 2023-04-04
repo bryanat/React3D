@@ -27,17 +27,18 @@ app.post('/instant', async (req, res) => {
     console.log('/instant route init');
     // console.log(req.body);
     
-    // // 1 write to json file with data from react app
-    // const uuid = uuidv4();
+    // 1 write to json file with data from react app
+    const uuid = uuidv4();
     // const filename = `data/${uuid}.json`;
-    // fs.writeFile(filename, JSON.stringify(req.body), (err) => {
-    //     if (err) throw err;
-    //     console.log(`Data written to file ${uuid}.json`);
-    // });
+    const filename = `/home/ubuntu/Reinforcement-Learning-Unity-3D-Packing/Assets/json/${uuid}.json`;
+    fs.writeFile(filename, JSON.stringify(req.body), (err) => {
+        if (err) throw err;
+        console.log(`Data written to file ${uuid}.json`);
+    });
     
     // // Run Unity
     // exec(`/home/bryanat/Unity/Hub/Editor/2022.2.12f1/Editor/Unity -projectPath /home/bryanat/Unity/05-Port -executeMethod EditorServer.Play inference path /home/bryanat/Unity/05-Port/Assets/json/dryrun13.json &`, (error, stdout, stderr) => {
-    exec(`/home/ubuntu/Unity/Hub/Editor/2022.2.12f1/Editor/Unity -projectPath /home/ubuntu/Reinforcement-Learning-Unity-3D-Packing -executeMethod EditorServer.Play inference path /home/ubuntu/Reinforcement-Learning-Unity-3D-Packing/Assets/json/dryrun13.json &`, (error, stdout, stderr) => {
+    exec(`/home/ubuntu/Unity/Hub/Editor/2022.2.12f1/Editor/Unity -projectPath /home/ubuntu/Reinforcement-Learning-Unity-3D-Packing -executeMethod EditorServer.Play inference path /home/ubuntu/Reinforcement-Learning-Unity-3D-Packing/Assets/json/boxes30v2.json &`, (error, stdout, stderr) => {
         if (error) { 
           console.error(`Error executing command: ${error}`);
           return;

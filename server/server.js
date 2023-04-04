@@ -53,7 +53,7 @@ app.post('/instant', async (req, res) => {
     // 2 run bash command with json file: mlagents-learn ..
     // Run Unity ML-Agents
     // exec(`cd /home/bryanat/Unity/05-Port/Assets && mlagents-learn ML-Agents/packerhand/Models/HandPPO_curriculum.yaml --run-id=dryrun13 --resume --inference &`, (error, stdout, stderr) => {
-    exec(`cd /home/ubuntu/Reinforcement-Learning-Unity-3D-Packing/Assets && mlagents-learn ML-Agents/packerhand/Models/HandPPO_curriculum.yaml --run-id=dryrun13 --resume --inference &`, (error, stdout, stderr) => {
+    exec(`cd /home/ubuntu/Reinforcement-Learning-Unity-3D-Packing/Assets && mlagents-learn ML-Agents/packerhand/Models/HandPPO_curriculum.yaml --run-id=boxes30v2 --resume --inference &`, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing command: ${error}`);
         return;

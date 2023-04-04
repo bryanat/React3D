@@ -27,34 +27,33 @@ app.post('/instant', async (req, res) => {
     console.log('/instant route init');
     // console.log(req.body);
     
-    // 1 write to json file with data from react app
-    const uuid = uuidv4();
-    const filename = `data/${uuid}.json`;
-    fs.writeFile(filename, JSON.stringify(req.body), (err) => {
-        if (err) throw err;
-        console.log(`Data written to file ${uuid}.json`);
-    });
-    
-    // 2 run bash command with json file: mlagents-learn ..
-    // Run Unity ML-Agents
-    exec(`cd /home/bryanat/Unity/05-Port/Assets &&  mlagents-learn ML-Agents/packerhand/Models/HandPPO_curriculum.yaml --run-id=newrunid --resume --inference &`, (error, stdout, stderr) => {
-        if (error) {
-          console.error(`Error executing command: ${error}`);
-          return;
-        }
-        // console.log(`Directory and file created at ${dirName}/${fileName}`);
-        console.log('mlagents command run')
-    });
-
+    // // 1 write to json file with data from react app
+    // const uuid = uuidv4();
+    // const filename = `data/${uuid}.json`;
+    // fs.writeFile(filename, JSON.stringify(req.body), (err) => {
+    //     if (err) throw err;
+    //     console.log(`Data written to file ${uuid}.json`);
+    // });
     
     // // Run Unity
-    exec(`/home/bryanat/Unity/Hub/Editor/2022.2.12f1/Editor/Unity -projectPath /home/bryanat/Unity/05-Port -executeMethod EditorServer.Play inference path /home/bryanat/Unity/05-Port/Assets/json/Boxes_30.json &`, (error, stdout, stderr) => {
+    exec(`/home/bryanat/Unity/Hub/Editor/2022.2.12f1/Editor/Unity -projectPath /home/bryanat/Unity/05-Port -executeMethod EditorServer.Play inference path /home/bryanat/Unity/05-Port/Assets/json/dryrun13.json &`, (error, stdout, stderr) => {
         if (error) { 
           console.error(`Error executing command: ${error}`);
           return;
         }
         // console.log(`Directory and file created at ${dirName}/${fileName}`);
         console.log('unity command run')
+    });
+
+    // 2 run bash command with json file: mlagents-learn ..
+    // Run Unity ML-Agents
+    exec(`cd /home/bryanat/Unity/05-Port/Assets && mlagents-learn ML-Agents/packerhand/Models/HandPPO_curriculum.yaml --run-id=dryrun13 --resume --inference &`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing command: ${error}`);
+        return;
+      }
+      // console.log(`Directory and file created at ${dirName}/${fileName}`);
+      console.log('mlagents command run')
     });
 
 
@@ -88,7 +87,10 @@ app.post('/instant', async (req, res) => {
   // });
 
     // res.download('/home/bryanat/Unity/05-Port/Assets/fbx/Boxes_30.fbx')
-    res.send(`Boxes_31.fbx`);
+    setTimeout(() => {
+      console.log('40 seconds have passed.');
+      res.send(`dryrun13.fbx`);
+    }, 40000);
 
     // res.send(`/home/bryanat/Unity/05-Port/Assets/fbx/Boxes_30.fbx`);
     // res.send(`/home/bryanat/Unity/05-Port/Assets/fbx/${uuid}.fbx`);
@@ -100,9 +102,9 @@ app.post('/instant', async (req, res) => {
 
 // 1 write to json file with data from react app
 // 2 run mlagents-learn with json file
-app.post('/finetuned', async (req, res) => {
+app.post('/enhanced', async (req, res) => {
     // init
-    console.log('/finetuned route init');
+    console.log('/enhanced route init');
     // console.log(req.body);
     
     // 1 write to json file with data from react app
@@ -172,12 +174,12 @@ app.post('/finetuned', async (req, res) => {
     // res.send(`/home/bryanat/Unity/05-Port/Assets/fbx/${uuid}.fbx`);
 
     // end
-    console.log('/sendtounity route end');
+    console.log('/enhanced route end');
 })
 
-
-app.post('/finetuned', async (req, res) => {
-    // run mla with training for x time
+app.post('/blank', async (req, res) => {
+  console.log('blank route init')
+  res.send('Bins01.fbx')
 })
 
 // start express server on port 8080

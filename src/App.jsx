@@ -51,7 +51,7 @@ export default function App() {
           <Box sx={{ borderBottom: 1, borderColor: 'divider', position: 'fixed', backgroundColor: theme.palette.background.default, zIndex: 2, width: '100%', display: 'flex', justifyContent: 'center',}}>
               <TabList onChange={handleChange} >
                 <Tab label="Demo" value="1" />
-                <Tab label="Overview Slides" value="2" />
+                <Tab label="Overview" value="2" />
                 <Tab label="Appendix" value="3" />
                 {/* <Tab label="Three (Tensorboard)" value="3" /> */}
               </TabList>

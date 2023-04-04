@@ -39,11 +39,15 @@ export default function InputTable() {
   //// 0: red default ////
   // perform any logic before setting new box length
   const handleboxLengthChange0 = (event) => {
-    setboxLength0(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxLength0(event.target.value);
+    }
   };
   // perform any logic before setting new box width
   const handleboxWidthChange0 = (event) => {
-    setboxWidth0(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxWidth0(event.target.value);
+    }
   };
   // perform any logic before setting new box height
   const handleboxHeightChange0 = (event) => {
@@ -137,12 +141,27 @@ export default function InputTable() {
     )
   });
 
+  const handleFBXclick = (event) => {
+    event.preventDefault();
+    axios({
+      method: 'post',
+      url: 'http://192.168.1.87:8080/blank'
+    })
+      .then((response) => {
+        console.log(`fbx/${response.data}`);
+        console.log(`XXXXXXXXXXXXXXxx`);
+
+        console.log('inside handleFBXclick')
+        console.log(response.data)
+        setfbxfilename('fbx/dryrun13.fbx')
+      })
+  }
+
   const handleSubmitInstant = (event) => {
     event.preventDefault();
     axios({
       method: 'post',
       url: 'http://192.168.1.87:8080/instant',
-      responseType: 'blob',
       data:
       {   
         "Container": [
@@ -200,8 +219,10 @@ export default function InputTable() {
         // const filename = `Boxes_30.fbx`;
         // const blob = new Blob([response.data]);
         // saveAs(blob, filename, { type: 'application/octet-stream' });
-
-        setfbxfilename('Boxes_31.fbx');
+        console.log(`init`)
+        console.log(`fbx/${response.data}`);
+        setfbxfilename(`fbx/${response.data}`);
+        console.log(`end`)
 
         // const url = window.URL.createObjectURL(new Blob([response.data]));
         // const link = document.createElement('a');
@@ -214,11 +235,11 @@ export default function InputTable() {
       });
   };
   
-  const handleSubmitFinetuned = (event) => {
+  const handleSubmitEnhanced = (event) => {
     event.preventDefault();
     axios({
       method: 'post',
-      url: 'http://192.168.1.87:8080/finetuned',
+      url: 'http://192.168.1.87:8080/enhanced',
       responseType: 'blob',
       data:
       {   
@@ -292,7 +313,7 @@ export default function InputTable() {
   };
 
   return (
-    // <Box component="form" { true == true ? onSubmit={handleSubmitInstant} : onSubmit={handleSubmitFinetuned} } sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
+    // <Box component="form" { true == true ? onSubmit={handleSubmitInstant} : onSubmit={handleSubmitEnhanced} } sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
     <Box component="form" onSubmit={handleSubmitInstant} sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
       <Box>{fbxfilename}</Box>
       <Button variant="contained" onClick={handleClick}>
@@ -436,6 +457,9 @@ export default function InputTable() {
       {components} */}
       <Button type="submit" variant="contained" color="primary">Submit</Button>
 
+    <Button onClick={handleFBXclick}>test fbx</Button>
+
+
       <Button variant="contained" onClick={handleOpen}>Open Component</Button>
       {open && 
         <Dialog open={true} onClose={handleClose}>
@@ -447,13 +471,13 @@ export default function InputTable() {
               <Grid item xs={6}>
                 {/* This is the left section */}
                 <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitInstant} >
-                  Inference
+                  Instant
                 </Box>
               </Grid>
               <Grid item xs={6}>
                 {/* This is the right section */}
-                <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitFinetuned} >
-                  Fine-Tuning
+                <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitEnhanced} >
+                  Enhanced
                 </Box>
               </Grid>
             </Grid>

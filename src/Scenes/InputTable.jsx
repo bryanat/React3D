@@ -7,6 +7,7 @@ import { FbxContext } from "./FbxContext";
 
 export default function InputTable() {
   const [open, setOpen] = useState(false);
+  const [enhancepercent, setEnhancepercent] = useState(0);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -52,11 +53,15 @@ export default function InputTable() {
   };
   // perform any logic before setting new box height
   const handleboxHeightChange0 = (event) => {
-    setboxHeight0(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxHeight0(event.target.value);
+    }
   };
   // perform any logic before setting new box count
   const handleboxCountChange0 = (event) => {
-    setboxCount0(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxCount0(event.target.value);
+    }
   };
   const handleboxCountIncrement0 = () => {
     setboxCount0(boxCount0 + 1);
@@ -65,19 +70,27 @@ export default function InputTable() {
   //// 1: green default ////
   // perform any logic before setting new box length
   const handleboxLengthChange1 = (event) => {
-    setboxLength1(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxLength1(event.target.value);
+    }
   };
   // perform any logic before setting new box width
   const handleboxWidthChange1 = (event) => {
-    setboxWidth1(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxWidth1(event.target.value);
+    }
   };
   // perform any logic before setting new box height
   const handleboxHeightChange1 = (event) => {
-    setboxHeight1(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxHeight1(event.target.value);
+    }
   };
   // perform any logic before setting new box count
   const handleboxCountChange1 = (event) => {
-    setboxCount1(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxCount1(event.target.value);
+    }
   };
   const handleboxCountIncrement1 = () => {
     setboxCount1(boxCount1 + 1);
@@ -86,19 +99,27 @@ export default function InputTable() {
   //// 2: blue default ////
   // perform any logic before setting new box length
   const handleboxLengthChange2 = (event) => {
-    setboxLength2(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxLength2(event.target.value);
+    }
   };
   // perform any logic before setting new box width
   const handleboxWidthChange2 = (event) => {
-    setboxWidth2(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxWidth2(event.target.value);
+    }
   };
   // perform any logic before setting new box height
   const handleboxHeightChange2 = (event) => {
-    setboxHeight2(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxHeight2(event.target.value);
+    }
   };
   // perform any logic before setting new box count
   const handleboxCountChange2 = (event) => {
-    setboxCount2(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxCount2(event.target.value);
+    }
   };
   const handleboxCountIncrement2 = () => {
     setboxCount2(boxCount2 + 1);
@@ -107,24 +128,38 @@ export default function InputTable() {
   //// 3: yellow default ////
   // perform any logic before setting new box length
   const handleboxLengthChange3 = (event) => {
-    setboxLength3(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxLength3(event.target.value);
+    }
   };
   // perform any logic before setting new box width
   const handleboxWidthChange3 = (event) => {
-    setboxWidth3(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxWidth3(event.target.value);
+    }
   };
   // perform any logic before setting new box height
   const handleboxHeightChange3 = (event) => {
-    setboxHeight3(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxHeight3(event.target.value);
+    }
   };
   // perform any logic before setting new box count
   const handleboxCountChange3 = (event) => {
-    setboxCount3(event.target.value);
+    if (!isNaN(event.target.value)) {
+      setboxCount3(event.target.value);
+    }
   };
   const handleboxCountIncrement3 = () => {
     setboxCount3(boxCount3 + 1);
   };
   /////////////////////////////
+
+  const handleenhancepercent = (event) => {
+    if (!isNaN(event.target.value)) {
+      setEnhancepercent(event.target.value);
+    }
+  };
 
 
   const [rowCount, setrowCount] = useState(0);
@@ -154,7 +189,7 @@ export default function InputTable() {
 
         console.log('inside handleFBXclick')
         console.log(response.data)
-        setfbxfilename('fbx/98e1c5e5-b617-41e9-9beb-f3c97cbd7552.fbx')
+        setfbxfilename('fbx/boxes30v2.fbx')
       })
   }
 
@@ -482,7 +517,14 @@ export default function InputTable() {
               <Grid item xs={6}>
                 {/* This is the right section */}
                 <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitEnhanced} >
-                  Enhanced
+                  Enhanced {enhancepercent}
+                  <TextField
+                    required
+                    id="enhancepercent"
+                    label="enhancepercent"
+                    value={enhancepercent}
+                    onChange={handleenhancepercent}
+                  />
                 </Box>
               </Grid>
             </Grid>

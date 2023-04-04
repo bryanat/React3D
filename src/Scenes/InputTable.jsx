@@ -4,7 +4,7 @@ import InputRow from './InputRow';
 import colors from '../colors';
 import axios from 'axios';
 import { FbxContext } from "./FbxContext";
-import hostIP from '../Assets/host.js'
+import hostIP from './host.js'
 
 
 export default function InputTable() {

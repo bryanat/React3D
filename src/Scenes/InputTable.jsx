@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { Box, TextField, Button } from '@mui/material';
+import { Box, TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Grid } from '@mui/material';
 import InputRow from './InputRow';
 import colors from '../colors';
 import axios from 'axios';
 import { FbxContext } from "./FbxContext";
-import { saveAs } from 'file-saver';
+
 
 export default function InputTable() {
+  const [open, setOpen] = useState(false);
 
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  
   ///////////////////////////////////////
   // state data to send as json
   const [boxLength0, setboxLength0] = useState(0);
@@ -133,11 +137,11 @@ export default function InputTable() {
     )
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmitInstant = (event) => {
     event.preventDefault();
     axios({
       method: 'post',
-      url: 'http://192.168.1.87:8080/sendtounity',
+      url: 'http://192.168.1.87:8080/instant',
       responseType: 'blob',
       data:
       {   
@@ -187,17 +191,17 @@ export default function InputTable() {
     }
     })
       .then((response) => {
-        // console.log(response)
-        const reader = new FileReader();
-        reader.readAsText(new Blob([response.data]));
-        reader.onload = () => console.log(reader.result);
+        // // console.log(response)
+        // const reader = new FileReader();
+        // reader.readAsText(new Blob([response.data]));
+        // reader.onload = () => console.log(reader.result);
 
         
         // const filename = `Boxes_30.fbx`;
         // const blob = new Blob([response.data]);
         // saveAs(blob, filename, { type: 'application/octet-stream' });
 
-        setfbxfilename('Boxes_30.fbx');
+        setfbxfilename('Boxes_31.fbx');
 
         // const url = window.URL.createObjectURL(new Blob([response.data]));
         // const link = document.createElement('a');
@@ -205,13 +209,91 @@ export default function InputTable() {
         // link.setAttribute('download', 'example.txt');
         // document.body.appendChild(link);
         // link.click();
-      });
 
-    // console.log(`boxId:0 boxWidth:${boxWidth} boxLength:${boxLength} boxHeight:${boxHeight} boxCount:${boxCount} `)
+        handleClose();
+      });
+  };
+  
+  const handleSubmitFinetuned = (event) => {
+    event.preventDefault();
+    axios({
+      method: 'post',
+      url: 'http://192.168.1.87:8080/finetuned',
+      responseType: 'blob',
+      data:
+      {   
+        "Container": [
+            {
+                "Length": 590,
+                "Width": 239, 
+                "Height": 235
+            }
+        ],
+        "Items": [
+            {
+                "Product_id": 0,
+                "Length": boxLength0,
+                "Width": boxWidth0,
+                "Height": boxHeight0,
+                "Quantity": boxCount0,
+                "Color": "#ff0000"
+                
+            },
+            {
+                "Product_id": 1,
+                "Length": boxLength1,
+                "Width": boxWidth1,
+                "Height": boxHeight1,
+                "Quantity": boxCount1,
+                "Color": "#00ff00"
+            },
+            {
+                "Product_id": 2,
+                "Length": boxLength2,
+                "Width": boxWidth2,
+                "Height": boxHeight2,
+                "Quantity": boxCount2,
+                "Color": "#0000ff"
+    
+            },
+            {
+                "Product_id": 3,
+                "Length": boxLength3,
+                "Width": boxWidth3,
+                "Height": boxWidth3,
+                "Quantity": boxCount3,
+                "Color": "#ffff00"
+            }
+        ]
+    }
+    })
+      .then((response) => {
+        // // console.log(response)
+        // const reader = new FileReader();
+        // reader.readAsText(new Blob([response.data]));
+        // reader.onload = () => console.log(reader.result);
+
+        
+        // const filename = `Boxes_30.fbx`;
+        // const blob = new Blob([response.data]);
+        // saveAs(blob, filename, { type: 'application/octet-stream' });
+
+        setfbxfilename('Boxes_31.fbx');
+
+        // const url = window.URL.createObjectURL(new Blob([response.data]));
+        // const link = document.createElement('a');
+        // link.href = url;
+        // link.setAttribute('download', 'example.txt');
+        // document.body.appendChild(link);
+        // link.click();
+
+        handleClose();
+      });
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
+    // <Box component="form" { true == true ? onSubmit={handleSubmitInstant} : onSubmit={handleSubmitFinetuned} } sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
+    <Box component="form" onSubmit={handleSubmitInstant} sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
       <Box>{fbxfilename}</Box>
       <Button variant="contained" onClick={handleClick}>
         Add Box Type
@@ -317,7 +399,8 @@ export default function InputTable() {
       </Box>      
 
       {/* 3: yellow default */}
-      <Box sx={{ bgcolor: '#ffff00' }}>
+      {/* <Box sx={{ bgcolor: '#ffff00' }}> */}
+      <Box >
         <TextField
           required
           id="boxLength"
@@ -351,7 +434,39 @@ export default function InputTable() {
 
       {/* <InputRow color="#181a1b"/>
       {components} */}
-      <Button type="submit" variant="contained" color="primary">Submit (Send to Unity backend)</Button>
+      <Button type="submit" variant="contained" color="primary">Submit</Button>
+
+      <Button variant="contained" onClick={handleOpen}>Open Component</Button>
+      {open && 
+        <Dialog open={true} onClose={handleClose}>
+        <Box sx={{ backgroundColor: '#181a1b' }}>
+          <DialogContent>
+            <DialogContentText>
+
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                {/* This is the left section */}
+                <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitInstant} >
+                  Inference
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                {/* This is the right section */}
+                <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitFinetuned} >
+                  Fine-Tuning
+                </Box>
+              </Grid>
+            </Grid>
+
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Close</Button>
+          </DialogActions>
+        </Box>
+        </Dialog>
+      }
+    
     </Box>
   );
 }

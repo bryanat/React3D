@@ -21,7 +21,7 @@ import { FbxContextProvider } from './Scenes/FbxContext';
 
 export default function App() {
 
-  const [value, setValue] = React.useState("2");
+  const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -50,28 +50,28 @@ export default function App() {
           <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider', position: 'fixed', backgroundColor: theme.palette.background.default, zIndex: 2, width: '100%', display: 'flex', justifyContent: 'center',}}>
               <TabList onChange={handleChange} >
-                <Tab label="Overview (Slides)" value="1" />
-                <Tab label="Two (Demo)" value="2" />
-                <Tab label="Three (Tensorboard)" value="3" />
-                <Tab label="Deep Dive (Appendix Cards)" value="4" />
+                <Tab label="Demo" value="1" />
+                <Tab label="Overview Slides" value="2" />
+                <Tab label="Appendix" value="3" />
+                {/* <Tab label="Three (Tensorboard)" value="3" /> */}
               </TabList>
             </Box>
             <TabPanel value="1">
-              <DemoSlides />
-            </TabPanel>
-            <TabPanel value="2">
-              Item 1
+              one
               <InputTable />
             </TabPanel>
-            <TabPanel value="3">
-              Item 2 (peak into backend (videos, gifs, training performance, graphs, tensorboard))
-              <SceneTensor />
+            <TabPanel value="2">
+              <DemoSlides />
             </TabPanel>
-            <TabPanel value="4">
+            <TabPanel value="3">
                 <AppendixCards />
             </TabPanel>
+            {/* <TabPanel value="4">
+              Item 2 (peak into backend (videos, gifs, training performance, graphs, tensorboard))
+              <SceneTensor />
+            </TabPanel> */}
           </TabContext>
-              {value == "2" ? <OutputScene3D fbxfilename="biniso20.fbx"/> : <null/>}
+              {value == "1" ? <OutputScene3D fbxfilename="biniso20.fbx"/> : <null/>}
         </FbxContextProvider>
       </ThemeProvider>
     </div>

@@ -21,6 +21,8 @@ import { FbxContextProvider } from './Scenes/FbxContext';
 
 export default function App() {
 
+  console.log("APP STARTED")
+
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {

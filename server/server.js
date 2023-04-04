@@ -43,6 +43,9 @@ app.post('/instant', async (req, res) => {
         }
         // console.log(`Directory and file created at ${dirName}/${fileName}`);
         console.log('unity command run')
+        res.send(`dryrun13.fbx`);
+        console.log('fbx sent to client')
+
     });
 
     // 2 run bash command with json file: mlagents-learn ..
@@ -87,10 +90,6 @@ app.post('/instant', async (req, res) => {
   // });
 
     // res.download('/home/bryanat/Unity/05-Port/Assets/fbx/Boxes_30.fbx')
-    setTimeout(() => {
-      console.log('40 seconds have passed.');
-      res.send(`dryrun13.fbx`);
-    }, 40000);
 
     // res.send(`/home/bryanat/Unity/05-Port/Assets/fbx/Boxes_30.fbx`);
     // res.send(`/home/bryanat/Unity/05-Port/Assets/fbx/${uuid}.fbx`);

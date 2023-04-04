@@ -159,9 +159,11 @@ export default function InputTable() {
 
   const handleSubmitInstant = (event) => {
     event.preventDefault();
+    console.log("HJBSAJKBDJASBDK");
     axios({
       method: 'post',
       url: 'http://192.168.1.87:8080/instant',
+      timeout: 90000,
       data:
       {   
         "Container": [
@@ -222,6 +224,7 @@ export default function InputTable() {
         console.log(`init`)
         console.log(`fbx/${response.data}`);
         setfbxfilename(`fbx/${response.data}`);
+        // setfbxfilename(`fbx/${response.data}`);
         console.log(`end`)
 
         // const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -232,7 +235,12 @@ export default function InputTable() {
         // link.click();
 
         handleClose();
-      });
+        // handleFBXclick();
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+      
   };
   
   const handleSubmitEnhanced = (event) => {
@@ -457,7 +465,7 @@ export default function InputTable() {
       {components} */}
       <Button type="submit" variant="contained" color="primary">Submit</Button>
 
-    <Button onClick={handleFBXclick}>test fbx</Button>
+    <Button onClick={handleFBXclick}>load fbx</Button>
 
 
       <Button variant="contained" onClick={handleOpen}>Open Component</Button>

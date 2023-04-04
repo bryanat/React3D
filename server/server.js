@@ -180,7 +180,7 @@ app.post('/enhanced', async (req, res) => {
 
 app.post('/blank', async (req, res) => {
   console.log('blank route init')
-  res.send('Bins01.fbx')
+  res.send('dryrun13.fbx')
 })
 
 // start express server on port 8080

@@ -323,7 +323,6 @@ export default function InputTable() {
   return (
     // <Box component="form" { true == true ? onSubmit={handleSubmitInstant} : onSubmit={handleSubmitEnhanced} } sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
     <Box component="form" onSubmit={handleSubmitInstant} sx={{ '& .MuiTextField-root': { m: 1, width: '19vw' } }}>
-      <Box>{fbxfilename}</Box>
       <Button variant="contained" onClick={handleClick}>
         Add Box Type
       </Button>
@@ -463,7 +462,6 @@ export default function InputTable() {
 
       {/* <InputRow color="#181a1b"/>
       {components} */}
-      <Button type="submit" variant="contained" color="primary">Submit</Button>
 
     <Button onClick={handleFBXclick}>load fbx</Button>
 

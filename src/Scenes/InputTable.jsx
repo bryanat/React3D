@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Box, TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Grid } from '@mui/material';
+import { Box, TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Grid, CircularProgress } from '@mui/material';
 import InputRow from './InputRow';
 import colors from '../colors';
 import axios from 'axios';
@@ -8,6 +8,7 @@ import { FbxContext } from "./FbxContext";
 export default function InputTable() {
   const [open, setOpen] = useState(false);
   const [enhancepercent, setEnhancepercent] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -196,6 +197,7 @@ export default function InputTable() {
   const handleSubmitInstant = (event) => {
     event.preventDefault();
     console.log("HJBSAJKBDJASBDK");
+    setIsLoading(true);
     axios({
       method: 'post',
       url: `${hostIP}:8080/instant`,
@@ -257,6 +259,7 @@ export default function InputTable() {
         // const filename = `Boxes_30.fbx`;
         // const blob = new Blob([response.data]);
         // saveAs(blob, filename, { type: 'application/octet-stream' });
+        setIsLoading(false);
         console.log(`init`)
         console.log(`fbx/${response.data}`);
         setfbxfilename(`fbx/${response.data}`);
@@ -511,13 +514,17 @@ export default function InputTable() {
               <Grid item xs={6}>
                 {/* This is the left section */}
                 <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitInstant} >
-                  Quick
+                  Quick Pack
+                  <div>
+                    <button onClick={fetchData}>Fetch Data</button>
+                    {isLoading && <CircularProgress />}
+                </div>
                 </Box>
               </Grid>
               <Grid item xs={6}>
                 {/* This is the right section */}
                 <Box sx={{ width: '100%', height: '100%' }} onClick={handleSubmitEnhanced} >
-                  Enhanced {enhancepercent}
+                  Enhanced Pack
                   <TextField
                     required
                     id="enhancepercent"

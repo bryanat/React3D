@@ -45,7 +45,7 @@ app.post('/instant', async (req, res) => {
         }
         // console.log(`Directory and file created at ${dirName}/${fileName}`);
         console.log('unity command run')
-        res.send(`dryrun13.fbx`);
+        res.send(`${uuid}.fbx`);
         console.log('fbx sent to client')
 
     });

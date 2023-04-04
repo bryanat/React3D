@@ -154,7 +154,7 @@ export default function InputTable() {
 
         console.log('inside handleFBXclick')
         console.log(response.data)
-        setfbxfilename('fbx/boxes30v2.fbx')
+        setfbxfilename('fbx/4e787ec6-0a45-4ee2-a06a-1474251be4cb.fbx')
       })
   }
 
